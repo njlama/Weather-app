@@ -1,0 +1,62 @@
+
+/* .container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 100%;
+}
+
+.container .currentWeather{
+    height: 70%;
+}  */
+
+
+
+ /* after */
+
+ 
+/* .container .currentWeather .col-md-8{
+   background-color: cornsilk;
+   position: relative;
+   top: 0px;
+   padding-left: 0px;
+   padding-right: 0px;
+} 
+
+.container .currentWeather .col-md-4{
+    background-color: rgb(194, 167, 134) 
+ }  
+
+ .container .currentWeather .col-md-8 button{
+   float: right;
+   margin-top:20px;
+ } 
+
+.container .weekForecast{
+    background-color: aquamarine;
+    height: 30%;
+} 
+
+.description {
+    height: 200px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 200px;
+    font-size: 20px;
+}
+
+.secondDiv {
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
+    overflow: scroll;
+    height: 470px;
+}
+.weatherNow{
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    border-bottom: 1px solid grey;
+    padding-bottom: 10px;
+    
+} */
