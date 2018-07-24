@@ -1,23 +1,18 @@
 import React from 'react';
 import {
-    Grid, Col, Row, SplitButton, MenuItem, ButtonToolbar
+    Grid, Col, Row
     } from 'react-bootstrap';
-import './mainContainer.css';
-
-
 /**
  * importing component
  */
 import CurrentTemp from './CurrentTemp';
 import WeekForeCast from './WeekForecast';
 import HourlyForecast from './HourlyForecast';
-import WeatherNavbar from './WeatherNavbar';
 
 /**
  * importing images
  */
 import sunny from './wIcons/sunny.png';
-import cloudy from './wIcons/cloudy.png';
 import lightening from './wIcons/lightening.png';
 import rain from './wIcons/rain.png';
 import snow from './wIcons/snow.png';
@@ -29,24 +24,26 @@ export default class Maincontainer extends React.Component{
      getCondition = (param) => {
             switch (param){
                 case "Clear":
-                    return <img src={sunny}/>;
-                    break;
+                    return <img src={sunny} alt="sunny"/>;
+                    
                 
-                case "Clouds":
-                    return <img src={cloudy}/>;
-                    break;
+                case "Clouds" || "haze":
+                    return <img src={partiallyCloudy} alt="partially Cloudy"/>;
+                    // break;
     
                 case "Thunderstorm":
-                    return <img src={lightening}/>;
-                    break;
+                    return <img src={lightening} alt="sunny"/>;
+                    // break;
     
                 case "Rain":
-                    return <img src={rain}/>;
-                    break;
+                    return <img src={rain} alt="rain"/>;
+                    // break;
                 
                 case "Snow":
-                    return <img src={snow}/>;
-                    break;    
+                    return <img src={snow} alt="snow"/>;
+                    // break;  
+                default: 
+                    return null;  
             }
           
         }

@@ -77,6 +77,7 @@ class App extends Component {
   getDay = (date) =>  new Date(date*1000).getDay();
 
   render() {
+    // console.log(this.state.weeklyForecast)
     return (
     <BrowserRouter>
       <div className="app-container">

@@ -73,7 +73,6 @@ header {
 }
 
 .container .weekForecast{
-   /* height: 30%; */
    padding-top: 15px;
    padding-left: 10px;
    padding-right: 10px;
@@ -116,6 +115,10 @@ header {
   height: 30%;
 }
 
+/* -- Find Weather form -- */ 
+/* .main-divFindWeather {
+  width: 
+} */
 /*--- Media --*/
 @media (min-width: 768px){
   
