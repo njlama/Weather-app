@@ -25,23 +25,18 @@ export default class Maincontainer extends React.Component{
             switch (param){
                 case "Clear":
                     return <img src={sunny} alt="sunny"/>;
-                    
-                
-                case "Clouds" || "haze":
+                           
+                case "Clouds" || "Haze":
                     return <img src={partiallyCloudy} alt="partially Cloudy"/>;
-                    // break;
     
                 case "Thunderstorm":
                     return <img src={lightening} alt="sunny"/>;
-                    // break;
     
                 case "Rain":
-                    return <img src={rain} alt="rain"/>;
-                    // break;
+                    return <img src={rain} alt="rain"/>;                 
                 
                 case "Snow":
-                    return <img src={snow} alt="snow"/>;
-                    // break;  
+                    return <img src={snow} alt="snow"/>; 
                 default: 
                     return null;  
             }

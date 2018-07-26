@@ -15,26 +15,26 @@ class App extends Component {
     currentDescription: "",
     currentTemp: null,
     currentDate: null,
-
-    hourlyForecast: [],
     weeklyForecast: []
   }
 
   componentDidMount() {
-
-    axios.get(`https://ipinfo.io/?token=c76ffa4c96e2d3`)
-    // axios.get(`https://api.ipdata.co/?api-key=8f68417a015e5178652664a61c326fe1c7b0d4990e9fa5f7e6416777`)
+    // let apiKey1 = "937d876d9dc631eef042ad55b2932b1b";
+    let apiKey1 = "78adafca4ab9951329a9eeaf1f870715";
+    // let apiKey2 = "7bf9a316b8bd44f473112322e71eaa14";
+    // axios.get(`https://ipinfo.io/?token=c76ffa4c96e2d3`)
+    axios.get(`https://api.ipdata.co/?api-key=8f68417a015e5178652664a61c326fe1c7b0d4990e9fa5f7e6416777`)
       .then(mResponse => {
       
         let city = mResponse.data.city;
-        let country = mResponse.data.country;
+        let country = mResponse.data.country_code;
         let cityCountry = [city, country];
         return cityCountry;
 
       })
       .then(value => {
         let mData = value;
-         axios.get(`http://api.openweathermap.org/data/2.5/weather?q=`+ value[0] + `,`+ value[1] + `&appid=7bf9a316b8bd44f473112322e71eaa14&units=metric`)
+         axios.get(`http://api.openweathermap.org/data/2.5/weather?q=`+ value[0] + `,`+ value[1] + `&appid=`+apiKey1+`&units=metric`)
         .then(response => {
           this.setState({
             currentCity: response.data.name,
@@ -48,8 +48,7 @@ class App extends Component {
         return mData; 
       })
       .then(mData => {
-        // console.log(mData);
-        axios.get(`http://api.openweathermap.org/data/2.5/forecast?q=`+ mData[0] + `,`+ mData[1] + `&appid=7bf9a316b8bd44f473112322e71eaa14&units=metric`)
+        axios.get(`http://api.openweathermap.org/data/2.5/forecast?q=`+ mData[0] + `,`+ mData[1] + `&appid=`+ apiKey1+`&units=metric`)
         .then(response => {     
           let week = [];
           for(let i=0; i < response.data.list.length; i++){
@@ -67,8 +66,7 @@ class App extends Component {
             weeklyForecast : week
           })
         })
-      }
-        
+      }    
       )
       .catch(error => {console.log(error)});
         
@@ -77,7 +75,6 @@ class App extends Component {
   getDay = (date) =>  new Date(date*1000).getDay();
 
   render() {
-    // console.log(this.state.weeklyForecast)
     return (
     <BrowserRouter>
       <div className="app-container">
@@ -89,7 +86,10 @@ class App extends Component {
                                                     date={this.state.currentDate}
                                                     hourlyForecast={this.state.weeklyForecast}
                                                     weeklyForecast={this.state.weeklyForecast}/>}/>
-        <Route path="/findweather" component={FindWeather}/>
+        <Route path="/findweather" 
+          render={()=> 
+          <FindWeather changeToFahren={this.changeToFahren.bind(this)}
+                        getDay={this.getDay.bind(this)}/>}/>
           
       </div>
     </BrowserRouter>
