@@ -1,9 +1,10 @@
 import React from 'react';
 import {
-    Grid
+    Grid, Button, Glyphicon
     } from 'react-bootstrap';
 import axios from 'axios';
 import MainContainer from './MainContainer';
+import searchIcon from './wIcons/searchIcon.png';
 
 export default class FindWeather extends React.Component{
     state={
@@ -124,9 +125,11 @@ export default class FindWeather extends React.Component{
         return(
             <Grid className="main-divFindWeather">
                 <form className="getWeatherForm" onSubmit={this.handleSubmit.bind(this)}>
+                                 
                     <input className="cityInput" type="text" placeholder="City Name" ref={(input)=>this.cityInput = input} onChange={this.changeHandler.bind(this)}/>
-                    <input className="countryInput" type="text" placeholder="Country Name" ref={(input)=>this.countryInput = input} onChange={this.changeHandler.bind(this)}/>
-                    <button type="submit">Get Weather</button>
+                    <input className="countryInput" type="text" placeholder="Country Name" ref={(input)=>this.countryInput = input} onChange={this.changeHandler.bind(this)}/>         
+                    <div><input type="image" src={searchIcon} alt="Submit"/></div>
+            
                 </form>
                 {this.state.display 
                 ? 
