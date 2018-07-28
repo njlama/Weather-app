@@ -34,7 +34,7 @@ class App extends Component {
       })
       .then(value => {
         let mData = value;
-         axios.get(`http://api.openweathermap.org/data/2.5/weather?q=`+ value[0] + `,`+ value[1] + `&appid=`+apiKey1+`&units=metric`)
+         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=`+ value[0] + `,`+ value[1] + `&appid=`+apiKey1+`&units=metric`)
         .then(response => {
           this.setState({
             currentCity: response.data.name,
@@ -48,7 +48,7 @@ class App extends Component {
         return mData; 
       })
       .then(mData => {
-        axios.get(`http://api.openweathermap.org/data/2.5/forecast?q=`+ mData[0] + `,`+ mData[1] + `&appid=`+ apiKey1+`&units=metric`)
+        axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=`+ mData[0] + `,`+ mData[1] + `&appid=`+ apiKey1+`&units=metric`)
         .then(response => {     
           let week = [];
           for(let i=0; i < response.data.list.length; i++){

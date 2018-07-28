@@ -22,7 +22,7 @@ export default class FindWeather extends React.Component{
 
     getWeatherData = () => {
         if (this.state.cityInput !== "" && this.state.countryInput !== ""){
-            axios.get(`http://api.openweathermap.org/data/2.5/weather?q=`+ this.state.cityInput + `,`+ this.state.countryInput + `&appid=78adafca4ab9951329a9eeaf1f870715&units=metric`)
+            axios.get(`https://api.openweathermap.org/data/2.5/weather?q=`+ this.state.cityInput + `,`+ this.state.countryInput + `&appid=78adafca4ab9951329a9eeaf1f870715&units=metric`)
              .then(response => {
                  this.setState({
                      city: response.data.name,
@@ -33,7 +33,7 @@ export default class FindWeather extends React.Component{
                  })
              })
              .then(data => {
-                 axios.get(`http://api.openweathermap.org/data/2.5/forecast?q=`+ this.state.city + `,`+ this.state.country + `&appid=78adafca4ab9951329a9eeaf1f870715&units=metric`)
+                 axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=`+ this.state.city + `,`+ this.state.country + `&appid=78adafca4ab9951329a9eeaf1f870715&units=metric`)
                      .then(mResponse => {
                          let week = [];
                          for(let i=0; i < mResponse.data.list.length; i++){
@@ -64,7 +64,7 @@ export default class FindWeather extends React.Component{
             let cityLocalStorage = localStorage.getItem("city");
             let countryLocalStorage = localStorage.getItem("country");
             if (cityLocalStorage !== "" && countryLocalStorage !== ""){
-                axios.get(`http://api.openweathermap.org/data/2.5/weather?q=`+ cityLocalStorage + `,`+ countryLocalStorage + `&appid=78adafca4ab9951329a9eeaf1f870715&units=metric`)
+                axios.get(`https://api.openweathermap.org/data/2.5/weather?q=`+ cityLocalStorage + `,`+ countryLocalStorage + `&appid=78adafca4ab9951329a9eeaf1f870715&units=metric`)
                 .then(response => {
                     this.setState({
                         city: response.data.name,
@@ -75,7 +75,7 @@ export default class FindWeather extends React.Component{
                     })
                 })
                 .then(data => {
-                    axios.get(`http://api.openweathermap.org/data/2.5/forecast?q=`+ cityLocalStorage + `,`+ countryLocalStorage + `&appid=78adafca4ab9951329a9eeaf1f870715&units=metric`)
+                    axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=`+ cityLocalStorage + `,`+ countryLocalStorage + `&appid=78adafca4ab9951329a9eeaf1f870715&units=metric`)
                     .then(mResponse => {
                         let week = [];
                         for(let i=0; i < mResponse.data.list.length; i++){

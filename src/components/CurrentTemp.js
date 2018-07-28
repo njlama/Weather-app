@@ -1,16 +1,9 @@
 import React from 'react';
 import {} from 'react-bootstrap';
-import "./currentWeather.css";
+import "../css/currentWeather.css";
 	
 
 import Timestamp from 'react-timestamp';
-// import eveningSunset from './wIcons/eveningSunset.png';
-// import sunny from './wIcons/sunny.png';
-// import cloudy from './wIcons/cloudy.png';
-// import lightening from './wIcons/lightening.png';
-// import rain from './wIcons/rain.png';
-// import snow from './wIcons/snow.png';
-// import partiallyCloudy from './wIcons/partiallyCloudy.png';
 
 export default class CurrentTemp  extends React.Component{
 

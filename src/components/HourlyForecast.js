@@ -1,6 +1,6 @@
 import React from 'react';
 import Timestamp from 'react-timestamp';
-import './hourlyForecast.css';
+import '../css/hourlyForecast.css';
 
 
 export default class HourlyForecast extends React.Component {
