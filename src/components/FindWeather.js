@@ -1,11 +1,12 @@
 import React from 'react';
-import {
-    Grid, Button, Glyphicon
-    } from 'react-bootstrap';
+import {Grid} from 'react-bootstrap';
 import axios from 'axios';
 import MainContainer from './MainContainer';
 import searchIcon from './wIcons/searchIcon.png';
 
+import Error from './Error';
+
+import {ReactCSSTransitionGroup} from 'react-addons-css-transition-group';
 export default class FindWeather extends React.Component{
     state={
         cityInput: "",
@@ -17,10 +18,20 @@ export default class FindWeather extends React.Component{
         date:null,
         mWeeklyForecast:[], 
         display: false, 
+        mError: false,
+    }
 
+    componentWillMount(){
+        if(localStorage.getItem("city") !== null && localStorage.getItem("country") !== null){
+           if (localStorage.getItem("city") !== "" && localStorage.getItem("country") !== ""){
+               this.getWeatherData();
+           } 
+       }
     }
 
     getWeatherData = () => {
+       
+        
         if (this.state.cityInput !== "" && this.state.countryInput !== ""){
             axios.get(`https://api.openweathermap.org/data/2.5/weather?q=`+ this.state.cityInput + `,`+ this.state.countryInput + `&appid=78adafca4ab9951329a9eeaf1f870715&units=metric`)
              .then(response => {
@@ -49,7 +60,8 @@ export default class FindWeather extends React.Component{
                          }
                          this.setState({
                              mWeeklyForecast : week,
-                             display: true
+                             display: true,
+                            
                          })
                          this.cityInput.value = "";
                          this.countryInput.value = "";
@@ -58,7 +70,15 @@ export default class FindWeather extends React.Component{
                      localStorage.setItem("country", this.state.country);
                     
              }) 
-             .catch(error => {console.log(error);});         
+             .catch(function(error){
+                console.log(error);
+                this.cityInput.value = "";
+                this.countryInput.value = "";
+                this.setState({
+                    mError: true
+                })
+                }.bind(this));
+                 
         }  
         else {
             let cityLocalStorage = localStorage.getItem("city");
@@ -91,10 +111,10 @@ export default class FindWeather extends React.Component{
                         }
                         this.setState({
                             mWeeklyForecast : week,
-                            display: true
+                            display: true,
+                           
                         })
-                    })
-                    
+                    })  
                 })
                 .catch(error => {console.log(error);});      
             }
@@ -102,35 +122,43 @@ export default class FindWeather extends React.Component{
         }  
     } 
 
+   
     handleSubmit = (e) => {
         e.preventDefault();
-        this.getWeatherData();  
-    }
-
-    componentWillMount(){
-         if(localStorage.getItem("city") !== null && localStorage.getItem("country") !== null){
-            if (localStorage.getItem("city") !== "" && localStorage.getItem("country") !== ""){
-                this.getWeatherData();
-            } 
+        this.getWeatherData();
+        this.cityInput.focus();
+        if(this.state.cityInput === "" && this.state.countryInput === ""){
+            this.setState({
+                mError: true
+            })
         }
     }
 
     changeHandler = () => {
         this.setState({
             cityInput: this.cityInput.value,
-            countryInput: this.countryInput.value
+            countryInput: this.countryInput.value,
+            mError: false,
         })
     }
+
+    
+
     render(){
         return(
             <Grid className="main-divFindWeather">
-                <form className="getWeatherForm" onSubmit={this.handleSubmit.bind(this)}>
-                                 
-                    <input className="cityInput" type="text" placeholder="City Name" ref={(input)=>this.cityInput = input} onChange={this.changeHandler.bind(this)}/>
-                    <input className="countryInput" type="text" placeholder="Country Name" ref={(input)=>this.countryInput = input} onChange={this.changeHandler.bind(this)}/>         
+                <form className="getWeatherForm" onSubmit={this.handleSubmit.bind(this)}>               
+                    <input className="cityInput" type="text" placeholder="City Name" ref={(input)=>{this.cityInput = input;}} onChange={this.changeHandler.bind(this)}/>
+                    <input className="countryInput" type="text" placeholder="Country Name" ref={(input)=>{this.countryInput = input;}} onChange={this.changeHandler.bind(this)}/>         
                     <div><input type="image" src={searchIcon} alt="Submit"/></div>
-            
                 </form>
+                {this.state.mError
+                ?
+                <Error/>
+                :
+                null
+                }
+                
                 {this.state.display 
                 ? 
                 <MainContainer city={this.state.city}

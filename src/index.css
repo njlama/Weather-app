@@ -37,15 +37,12 @@ a {
 
 .app-container {
     width: 80%;
-    /* max-width: 900px; */
     margin: 2em auto 3em;
     border-radius: 5px;
     box-shadow: 0 3px rgba(0,0,0, .1);
     overflow: hidden;
 
     background-color: rgba(20, 13, 13, 0.1);
-    /* opacity: 0.2;
-    filter: alpha(opacity=70) */
 }
 
 .container {
@@ -83,7 +80,6 @@ header {
    height: 200px;
    text-align: center;
    vertical-align: middle;
-   /* line-height: 200px; */
    font-size: 40px;
 }
 
@@ -117,13 +113,24 @@ header {
 
 /* -- Find Weather form -- */ 
 
-.main-divFindWeather form {
+.main-divFindWeather form{
   text-align: center;
-  /* background-color: rgba(255, 255, 255, 0.1); */
   width: 80%;
   padding: 10px;
   margin: 0 auto;
   margin-top: 15px;
+}
+.errorBox{
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.errorBox p{
+  margin: 0px;
+  font-size: 20px;
+  padding: 5px;
+  color: rgb(204, 146, 38);
 }
 
 .getWeatherForm input{
@@ -145,13 +152,9 @@ form input[type=text] {
 }
 
 form.getWeatherForm .cityInput {
-  border-radius: 1.5em 0em 0em 1.5em;
- 
-  
+  border-radius: 1.5em 0em 0em 1.5em; 
 }
-/* form.getWeatherForm .countryInput {
-  
-} */
+
 form div{
   float: left;
   width: 20%;  
@@ -169,8 +172,7 @@ form.getWeatherForm::after{
 }
 
 ::placeholder {
-  color: grey
-  /* color:  rgb(204, 204, 204); */
+  color: grey;
 }
 /*--- Media --*/
 @media (min-width: 768px){
