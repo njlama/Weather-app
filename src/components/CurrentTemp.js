@@ -10,6 +10,7 @@ export default class CurrentTemp  extends React.Component{
         state = {
             weekDays : ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
         }
+
     render(){
         
         let date = new Date(this.props.date*1000);
@@ -22,8 +23,8 @@ export default class CurrentTemp  extends React.Component{
             <div>
                 <div className="currentCityCountry">
                     <span>{this.props.city} , {this.props.country}</span><br/>
+                    {nameOfDay} <br/>
                     <Timestamp time={this.props.date} format="date"/><br/>
-                    {nameOfDay}, <Timestamp time={this.props.date} format="time"/><br/>
                 </div>
                 
                 <div className="temp">
